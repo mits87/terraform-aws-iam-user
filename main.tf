@@ -33,7 +33,7 @@ resource "aws_iam_user_group_membership" "default" {
   count      = var.enabled == "true" && length(var.groups) > 0 ? 1 : 0
 
   user       = aws_iam_user.default.*.name[0]
-  groups     = [var.groups]
+  groups     = var.groups
   depends_on = [aws_iam_user.default]
 }
 
